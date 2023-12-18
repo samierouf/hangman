@@ -30,6 +30,17 @@ class Hangman:
         guess = guess.lower()
         if guess in self.word:
             print(f"Good guess! {guess} is in the word")
+            for index, letter in enumerate(self.word):
+                if letter == guess:
+                    self.word_guessed[index] = guess
+            self.num_letters -= 1
+        else:
+            self.num_lives -= 1
+            print(f"Sorry, {guess} is not in the word")
+            print(f"You havee {self.num_lives} lives left")
+        
+
+
 
     def ask_for_input(self):
         while True:
@@ -43,11 +54,10 @@ class Hangman:
                 self.list_of_guesses.append(self.guess)
                 
 
-# Create an instance of the Hangman class
-hangman_game = Hangman(word_list=["apple", "banana", "orange"])
 
-# Call the ask_for_input method
-hangman_game.ask_for_input()
+
+
+
 
 
 
